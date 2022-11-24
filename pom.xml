@@ -17,6 +17,8 @@
     <maven.compiler.target>17</maven.compiler.target>
     <sonar.organization>mathiasriedel</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <sonar.organization>mathias-riedel</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
 
   <dependencies>
