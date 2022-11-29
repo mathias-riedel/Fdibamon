@@ -33,17 +33,23 @@ public class FdibamonAttackSimulator {
     }
 
     public void useSpecialPowers(Fdibamon attacker, Fdibamon attackee) {
-        if (attacker.getSpecialPower() == SpecialPower.POWERATTACK) {
-            int previousHitpoints = attackee.getHitpoints();
-            int newHitpoints = previousHitpoints / 3;
-            attackee.setHitpoints(newHitpoints);
-            System.out.print(attacker.getName() + " benutzt Spezialkraft Power Attack!\n");
-        } else {
-            int previousHitpoints = attacker.getHitpoints();
-            int newHitpoints = previousHitpoints * 3;
-            attacker.setHitpoints(newHitpoints);
-            System.out.print(attacker.getName() + " benutzt Spezialkraft Jedi Healing!\n");
+        SpecialPowerStrategy specialPowerStrategy;
+
+        switch (attacker.getSpecialPower()) {
+            case POWERATTACK:
+                specialPowerStrategy = new PowerAttackStrategy();
+                break;
+            case JEDIHEALING:
+                specialPowerStrategy = new JediHealingStrategy();
+                break;
+            default:
+                specialPowerStrategy = new StealHitpointsStrategy();
+                break;
         }
+
+        SpecialPowerReturnValues returnValues = specialPowerStrategy.useSpecialPower(attacker, attackee);
+        attacker.setHitpoints(returnValues.getAttackerHitpoints());
+        attackee.setHitpoints(returnValues.getAttackeeHitpoints());
     }
 
     private int calculateRemainingHitpointsOfEnemy(int attackPower, int currentHitpointsOfEnemy) {
