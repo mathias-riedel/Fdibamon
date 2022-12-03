@@ -54,11 +54,11 @@ public class AppTest
     public static List<Fdibamon> initializeFdibamonsForTesting() {
         List<Fdibamon> fdibamons = new ArrayList<>();
         
-        Fdibamon jan = new Fdibamon("Jan", 80, 5, SpecialPower.JEDIHEALING, 50, 40);
-        Fdibamon rado = new Fdibamon("Rado", 50, 3, SpecialPower.POWERATTACK, 30, 20);
-        Fdibamon klaus = new Fdibamon("Klaus", 30, 3, SpecialPower.STEALHITPOINTS, 10, 25);
-        Fdibamon mathias = new Fdibamon("Mathias", 100, 5, SpecialPower.JEDIHEALING, 30, 15);
-        Fdibamon nikolay = new Fdibamon("Nikolay", 20, 8, SpecialPower.POWERATTACK, 17, 10);
+        Fdibamon jan = new Fdibamon("Jan", 60, 8, SpecialPower.JEDIHEALING, 50, 20);
+        Fdibamon rado = new Fdibamon("Rado", 40, 6, SpecialPower.POWERATTACK, 30, 30);
+        Fdibamon klaus = new Fdibamon("Klaus", 30, 4, SpecialPower.STEALHITPOINTS, 10, 15);
+        Fdibamon mathias = new Fdibamon("Mathias", 50, 9, SpecialPower.JEDIHEALING, 30, 10);
+        Fdibamon nikolay = new Fdibamon("Nikolay", 20, 5, SpecialPower.POWERATTACK, 2, 5);
         
         fdibamons.add(jan);
         fdibamons.add(rado);
