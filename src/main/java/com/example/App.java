@@ -110,7 +110,7 @@ public class App {
                 gameOutput.updateInfo("Das eingegebene Fdibamon existiert nicht. Bitte versuchen Sie es noch einmal!");
             }
         }
-        return fdibamon.clone();
+        return new Fdibamon(fdibamon);
     }
 
     public static List<Fdibamon> initializeFdibamons() {

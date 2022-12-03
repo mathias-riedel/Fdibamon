@@ -1,6 +1,6 @@
 package com.example;
 
-public class Fdibamon implements Cloneable {
+public class Fdibamon {
   private String name;
   private long hitpoints;
   private int attackPower;
@@ -15,6 +15,15 @@ public class Fdibamon implements Cloneable {
     this.specialPower = specialPower;
     this.hitChance = hitChance;
     this.evasionChance = evasionChance;
+  }
+
+  public Fdibamon(Fdibamon fdibamon) {
+    this.name = fdibamon.name;
+    this.hitpoints = fdibamon.hitpoints;
+    this.attackPower = fdibamon.attackPower;
+    this.specialPower = fdibamon.specialPower;
+    this.hitChance = fdibamon.hitChance;
+    this.evasionChance = fdibamon.evasionChance;
   }
   
   public SpecialPower getSpecialPower() {
@@ -57,9 +66,5 @@ public class Fdibamon implements Cloneable {
   @Override
   public String toString() {
     return this.name;
-  }
-
-  public Fdibamon clone() {
-    return new Fdibamon(this.name, this.hitpoints, this.attackPower, this.specialPower, this.hitChance, this.evasionChance);
   }
 }
