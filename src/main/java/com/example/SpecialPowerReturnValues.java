@@ -1,23 +1,23 @@
 package com.example;
 
 public class SpecialPowerReturnValues {
-    private int attackerHitpoints;
-    private int attackeeHitpoints;
+    private long attackerHitpoints;
+    private long attackeeHitpoints;
     
-    public SpecialPowerReturnValues(int attackerHitpoints, int attackeeHitpoints) {
+    public SpecialPowerReturnValues(long attackerHitpoints, long attackeeHitpoints) {
         this.attackerHitpoints = attackerHitpoints;
         this.attackeeHitpoints = attackeeHitpoints;
     }
-    public int getAttackerHitpoints() {
+    public long getAttackerHitpoints() {
         return attackerHitpoints;
     }
-    public void setAttackerHitpoints(int attackerHitpoints) {
+    public void setAttackerHitpoints(long attackerHitpoints) {
         this.attackerHitpoints = attackerHitpoints;
     }
-    public int getAttackeeHitpoints() {
+    public long getAttackeeHitpoints() {
         return attackeeHitpoints;
     }
-    public void setAttackeeHitpoints(int attackeeHitpoints) {
+    public void setAttackeeHitpoints(long attackeeHitpoints) {
         this.attackeeHitpoints = attackeeHitpoints;
     }
 

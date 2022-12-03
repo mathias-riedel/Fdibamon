@@ -17,7 +17,7 @@ public class FdibamonAttackSimulator {
     }
 
     public void successfulAttack(Fdibamon attacker, Fdibamon attackee) {
-        int remainingHitpointsOfEnemy = calculateRemainingHitpointsOfEnemy(attacker.getAttackPower(),
+        long remainingHitpointsOfEnemy = calculateRemainingHitpointsOfEnemy(attacker.getAttackPower(),
                 attackee.getHitpoints());
         attackee.setHitpoints(remainingHitpointsOfEnemy);
     }
@@ -26,8 +26,8 @@ public class FdibamonAttackSimulator {
         int effectiveHitChance = this.rand.nextInt(attacker.getHitChance());
         int effectiveEvasionChance = this.rand.nextInt(attackee.getEvasionChance());
 
-        System.out.println("Effektive Hit Chance von " + attacker.getName() + ": " + effectiveHitChance);
-        System.out.println("Effektive Evasion Chance von " + attackee.getName() + ": " + effectiveEvasionChance);
+        App.gameOutput.updateInfo("Effektive Hit Chance von " + attacker.getName() + ": " + effectiveHitChance);
+        App.gameOutput.updateInfo("Effektive Evasion Chance von " + attackee.getName() + ": " + effectiveEvasionChance);
 
         return effectiveHitChance > effectiveEvasionChance;
     }
@@ -52,8 +52,8 @@ public class FdibamonAttackSimulator {
         attackee.setHitpoints(returnValues.getAttackeeHitpoints());
     }
 
-    private int calculateRemainingHitpointsOfEnemy(int attackPower, int currentHitpointsOfEnemy) {
-        int remainingHitpointsOfEnemy = currentHitpointsOfEnemy - attackPower;
+    private long calculateRemainingHitpointsOfEnemy(int attackPower, long currentHitpointsOfEnemy) {
+        long remainingHitpointsOfEnemy = currentHitpointsOfEnemy - attackPower;
 
         if (remainingHitpointsOfEnemy < 0) {
             remainingHitpointsOfEnemy = 0;

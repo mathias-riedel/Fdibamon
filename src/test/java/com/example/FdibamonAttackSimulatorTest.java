@@ -38,6 +38,6 @@ public class FdibamonAttackSimulatorTest {
         
         attackSimulator.useSpecialPowers(fdibamon1, fdibamon2);
 
-        assertEquals(600, fdibamon1.getHitpoints());
+        assertEquals(400, fdibamon1.getHitpoints());
     }
 }

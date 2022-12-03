@@ -6,11 +6,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
+    public static GameOutput gameOutput = new GameOutput();
     public static void main( String[] args )
     {
         List<Fdibamon> fdibamons = initializeFdibamons();
 
-        System.out.println("Folgende Fdibamons stehen zur Auswahl: Jan, Rado, Klaus, Mathias, Nikolay");
+        ConsoleOutput consoleOutput = new ConsoleOutput(gameOutput);
+
+        gameOutput.attach(consoleOutput);
+
+        gameOutput.updateInfo("Folgende Fdibamons stehen zur Auswahl: Jan, Rado, Klaus, Mathias, Nikolay");
 
         printEmptyLine();
 
@@ -19,11 +24,11 @@ public class App {
         Fdibamon fdibamon2 = letUserChooseFdibamon(fdibamons, scanner);
         scanner.close();
 
-        System.out.println("Ihre gewählten Fdibamons: " + fdibamon1 + ", " + fdibamon2);
+        gameOutput.updateInfo("Ihre gewählten Fdibamons: " + fdibamon1 + ", " + fdibamon2);
 
         printEmptyLine();
 
-        System.out.println("Der Kampf beginnt!");
+        gameOutput.updateInfo("Der Kampf beginnt!");
 
         FightResults results = fight(fdibamon1, fdibamon2);
 
@@ -44,15 +49,15 @@ public class App {
 
         do {
             printEmptyLine();
-            System.out.println("Runde " + round);
+            gameOutput.updateInfo("Runde " + round);
 
             boolean useSpecialPower = round % 5 == 0;
 
             attackSimulator.attack(fdibamon1, fdibamon2, useSpecialPower);
             attackSimulator.attack(fdibamon2, fdibamon1, useSpecialPower);
 
-            System.out.println("Hitpoints von Fdibamon " + fdibamon1 + ": " + fdibamon1.getHitpoints());
-            System.out.println("Hitpoints von Fdibamon " + fdibamon2 + ": " + fdibamon2.getHitpoints());
+            gameOutput.updateInfo("Hitpoints von Fdibamon " + fdibamon1 + ": " + fdibamon1.getHitpoints());
+            gameOutput.updateInfo("Hitpoints von Fdibamon " + fdibamon2 + ": " + fdibamon2.getHitpoints());
 
             areBothFdibamonsStillAlive = fdibamon1.getHitpoints() > 0 && fdibamon2.getHitpoints() > 0;
             round++;
@@ -75,9 +80,9 @@ public class App {
 
     public static void printWinner(Fdibamon winner) {
         if (winner != null) {
-            System.out.println("Der Gewinner ist " + winner + "!");
+            gameOutput.updateInfo("Der Gewinner ist " + winner + "!");
         } else {
-            System.out.println("Der Kampf ist unentschieden!");
+            gameOutput.updateInfo("Der Kampf ist unentschieden!");
         }
     }
 
@@ -96,26 +101,26 @@ public class App {
         String name = "";
         Fdibamon fdibamon = null;
         while (fdibamon == null) {
-            System.out.println("Wählen Sie ein Fdibamon aus:");
+            gameOutput.updateInfo("Wählen Sie ein Fdibamon aus:");
             name = scanner.nextLine();
 
             fdibamon = getFdibamonFromList(fdibamons, name);
 
             if (fdibamon == null) {
-                System.out.println("Das eingegebene Fdibamon existiert nicht. Bitte versuchen Sie es noch einmal!");
+                gameOutput.updateInfo("Das eingegebene Fdibamon existiert nicht. Bitte versuchen Sie es noch einmal!");
             }
         }
-        return fdibamon;
+        return fdibamon.clone();
     }
 
     public static List<Fdibamon> initializeFdibamons() {
         List<Fdibamon> fdibamons = new ArrayList<>();
 
-        Fdibamon jan = new Fdibamon("Jan", 80, 5, SpecialPower.JEDIHEALING, 50, 40);
-        Fdibamon rado = new Fdibamon("Rado", 50, 3, SpecialPower.POWERATTACK, 30, 20);
-        Fdibamon klaus = new Fdibamon("Klaus", 30, 3, SpecialPower.STEALHITPOINTS, 10, 25);
-        Fdibamon mathias = new Fdibamon("Mathias", 100, 5, SpecialPower.JEDIHEALING, 30, 15);
-        Fdibamon nikolay = new Fdibamon("Nikolay", 20, 8, SpecialPower.POWERATTACK, 17, 10);
+        Fdibamon jan = new Fdibamon("Jan", 60, 8, SpecialPower.JEDIHEALING, 50, 20);
+        Fdibamon rado = new Fdibamon("Rado", 40, 6, SpecialPower.POWERATTACK, 30, 30);
+        Fdibamon klaus = new Fdibamon("Klaus", 30, 4, SpecialPower.STEALHITPOINTS, 10, 15);
+        Fdibamon mathias = new Fdibamon("Mathias", 50, 9, SpecialPower.JEDIHEALING, 30, 10);
+        Fdibamon nikolay = new Fdibamon("Nikolay", 20, 5, SpecialPower.POWERATTACK, 2, 5);
         
         fdibamons.add(jan);
         fdibamons.add(rado);
@@ -127,6 +132,6 @@ public class App {
     }
 
     private static void printEmptyLine() {
-        System.out.println("\n");
+        gameOutput.updateInfo("\n");
     }
 }
