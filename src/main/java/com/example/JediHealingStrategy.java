@@ -6,7 +6,6 @@ public class JediHealingStrategy implements SpecialPowerStrategy {
         App.gameOutput.updateInfo(attacker.getName() + " benutzt Spezialkraft Jedi Healing!\n");
         long previousHitpoints = attacker.getHitpoints();
         long newAttackerHitpoints = previousHitpoints * 2;
-        SpecialPowerReturnValues returnValues = new SpecialPowerReturnValues(newAttackerHitpoints, attackee.getHitpoints());
-        return returnValues;
+        return new SpecialPowerReturnValues(newAttackerHitpoints, attackee.getHitpoints());
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    public static GameOutput gameOutput = new GameOutput();
+    public static final GameOutput gameOutput = new GameOutput();
     public static void main( String[] args )
     {
         List<Fdibamon> fdibamons = initializeFdibamons();

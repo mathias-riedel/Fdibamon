@@ -6,7 +6,6 @@ public class PowerAttackStrategy implements SpecialPowerStrategy {
         App.gameOutput.updateInfo(attacker.getName() + " benutzt Spezialkraft Power Attack!\n");
         long previousHitpoints = attackee.getHitpoints();
         long newAttackeeHitpoints = previousHitpoints / 3;
-        SpecialPowerReturnValues returnValues = new SpecialPowerReturnValues(attacker.getHitpoints(), newAttackeeHitpoints);
-        return returnValues;
+        return new SpecialPowerReturnValues(attacker.getHitpoints(), newAttackeeHitpoints);
     }
 }

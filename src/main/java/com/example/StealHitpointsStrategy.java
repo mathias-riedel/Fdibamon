@@ -8,7 +8,6 @@ public class StealHitpointsStrategy implements SpecialPowerStrategy {
         long previousAttackerHitpoints = attacker.getHitpoints();
         long newAttackeeHitpoints = previousAttackeeHitpoints - 10;
         long newAttackerHitpoints = previousAttackerHitpoints + 10;
-        SpecialPowerReturnValues returnValues = new SpecialPowerReturnValues(newAttackerHitpoints, newAttackeeHitpoints);
-        return returnValues;
+        return new SpecialPowerReturnValues(newAttackerHitpoints, newAttackeeHitpoints);
     }
 }

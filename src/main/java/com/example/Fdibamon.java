@@ -60,7 +60,6 @@ public class Fdibamon implements Cloneable {
   }
 
   public Fdibamon clone() {
-    Fdibamon clone = new Fdibamon(this.name, this.hitpoints, this.attackPower, this.specialPower, this.hitChance, this.evasionChance);
-    return clone;
+    return new Fdibamon(this.name, this.hitpoints, this.attackPower, this.specialPower, this.hitChance, this.evasionChance);
   }
 }
